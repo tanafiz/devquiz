@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevQuiz System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M12 2L2 7L12 12L22 7L12 2Z' fill='%232563EB' stroke='%232563EB' stroke-width='2' stroke-linejoin='round'/%3E%3Cpath d='M2 17L12 22L22 17' stroke='%232563EB' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M2 12L12 17L22 12' stroke='%232563EB' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+</head>
+
+<body class="light-mode">
+
+  <div class="bg-particles" id="particles-container"></div>
+
+  <div class="login-container" id="login-container">
+    <div class="login-card-wrapper">
+      <div class="login-header">
+        <div class="brand-logo" style="margin-bottom: 12px; display: flex; justify-content: center;">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#2563EB" stroke="#2563EB" stroke-width="2"
+              stroke-linejoin="round" />
+            <path d="M2 17L12 22L22 17" stroke="#2563EB" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
+            <path d="M2 12L12 17L22 12" stroke="#2563EB" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </div>
+        <h2 class="login-title">DevQuiz System</h2>
+        <p class="login-subtitle">Please provide your basic information to enter the exam portal.</p>
+      </div>
+
+      <form id="form-student-info" class="student-info-form" onsubmit="event.preventDefault();">
+        <div class="inputs-grid">
+          <div class="premium-field-card">
+            <div class="field-icon-area">
+              <i class="fa-regular fa-user"></i>
+            </div>
+            <div class="field-input-area">
+              <label for="input-fullname">USER NAME</label>
+              <input type="text" id="input-fullname" placeholder="Enter your full name" required autocomplete="name">
+            </div>
+          </div>
+
+          <div class="premium-field-card">
+            <div class="field-icon-area">
+              <i class="fa-solid fa-building-columns"></i>
+            </div>
+            <div class="field-input-area">
+              <label for="input-school">Institution Name</label>
+              <input type="text" id="input-school" placeholder="Enter your institution name" required>
+            </div>
+          </div>
+
+          <div class="premium-field-card">
+            <div class="field-icon-area">
+              <i class="fa-solid fa-users-rectangle"></i>
+            </div>
+            <div class="field-input-area">
+              <label for="input-dept">Department</label>
+              <input type="text" id="input-dept" placeholder="Example - Computer Science & Engineering" required>
+            </div>
+          </div>
+
+          <div class="premium-field-card">
+            <div class="field-icon-area">
+              <i class="fa-regular fa-envelope"></i>
+            </div>
+            <div class="field-input-area">
+              <label for="input-email">Email Address</label>
+              <input type="email" id="input-email" placeholder="Enter your valid email address" required
+                autocomplete="email">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-actions-center" style="margin-top: 24px;">
+          <button type="submit" id="btn-save-info" class="btn-save-continue" style="width: 100%; max-width: 320px;">
+            <span>Login to Dashboard</span>
+            <i class="fa-solid fa-arrow-right-to-bracket"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <footer class="site-footer login-footer">
+    <p>© 2026 T. A. Nafiz | All Rights Reserved</p>
+  </footer>
+
+  <div class="dashboard-wrapper">
+
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-logo">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#2563EB" stroke="#2563EB" stroke-width="2"
+              stroke-linejoin="round" />
+            <path d="M2 17L12 22L22 17" stroke="#2563EB" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
+            <path d="M2 12L12 17L22 12" stroke="#2563EB" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </div>
+        <div class="brand-info">
+          <span class="brand-name">DevQuiz System</span>
+          <span class="brand-tagline">Test, Learn & Level Up</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-menu">
+        <button class="menu-item active" data-tab="dashboard">
+          <div class="menu-icon-box">
+            <i class="fa-solid fa-house"></i>
+          </div>
+          <span>Dashboard</span>
+        </button>
+        <button class="menu-item" data-tab="profile" id="nav-profile">
+          <div class="menu-icon-box">
+            <i class="fa-regular fa-user"></i>
+          </div>
+          <span>My Profile</span>
+        </button>
+        <button class="menu-item" data-tab="results" id="nav-results">
+          <div class="menu-icon-box">
+            <i class="fa-solid fa-chart-simple"></i>
+          </div>
+          <span>Results</span>
+        </button>
+        <button class="menu-item" data-tab="instruction" id="nav-instruction">
+          <div class="menu-icon-box">
+            <i class="fa-solid fa-book-open"></i>
+          </div>
+          <span>Instruction</span>
+        </button>
+      </nav>
+    </aside>
+
+    <div class="main-panel">
+
+      <header class="top-header">
+        <div class="header-left">
+          <button class="sidebar-toggle" id="sidebar-toggle" title="Toggle Sidebar">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <h2 class="view-title" id="page-title-heading">Dashboard</h2>
+        </div>
+        <div class="header-right">
+          <div class="theme-toggle-pill" id="theme-toggle-btn" title="Toggle theme mode">
+            <div class="toggle-track">
+              <span class="toggle-icon active-sun"><i class="fa-regular fa-sun"></i></span>
+              <span class="toggle-icon"><i class="fa-regular fa-moon"></i></span>
+              <div class="toggle-slider"></div>
+            </div>
+          </div>
+
+          <div class="user-avatar-pill" id="header-user-avatar-pill"
+            style="display: none; align-items: center; gap: 8px; margin-right: 14px; cursor: pointer;"
+            onclick="document.getElementById('nav-profile').click()">
+            <img id="header-avatar"
+              src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%239CA3AF'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z'/></svg>"
+              alt="Avatar"
+              style="width: 34px; height: 34px; border-radius: 50%; object-fit: cover; border: 2px solid var(--blue-primary); box-shadow: var(--shadow-sm); transition: transform 0.2s;">
+          </div>
+
+          <button id="btn-logout" class="logout-btn">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Logout</span>
+          </button>
+        </div>
+      </header>
+
+      <div class="welcome-banner" id="welcome-banner">
+        <h2 id="welcome-user-name">Welcome</h2>
+      </div>
+
+      <main class="content-body">
+
+        <div id="tab-view-dashboard" class="tab-view active">
+
+          <div class="announcement-banner">
+            <div class="announcement-content">
+              <i class="fa-solid fa-circle-exclamation"></i>
+              <span>Complete the test carefully and submit on time.</span>
+            </div>
+          </div>
+
+          <div class="dashboard-grid">
+
+            <section class="dashboard-card" id="quiz-config-section">
+              <div class="card-header" style="text-align: center; margin-bottom: 24px;">
+                <h3 class="section-title" style="font-size: 22px;">Configure Examination</h3>
+                <p class="section-subtitle" style="font-size: 13px;">Please select your desired subject and question
+                  count below.</p>
+              </div>
+
+              <div class="config-selection-area">
+                <h4 class="config-group-title"><i class="fa-solid fa-tags"></i> Select Subject Category</h4>
+                <div class="premium-select-grid col-4" id="config-subject-grid" style="margin-bottom: 28px;">
+                  <div class="select-option-card active" data-subject="all">
+                    <span class="subject-icon"><i class="fa-solid fa-cubes"></i></span>
+                    <span class="option-sublabel">All Subjects</span>
+                  </div>
+                  <div class="select-option-card" data-subject="html">
+                    <span class="subject-icon"><i class="fa-brands fa-html5" style="color: #E34F26;"></i></span>
+                    <span class="option-sublabel">HTML</span>
+                  </div>
+                  <div class="select-option-card" data-subject="css">
+                    <span class="subject-icon"><i class="fa-brands fa-css3-alt" style="color: #1572B6;"></i></span>
+                    <span class="option-sublabel">CSS</span>
+                  </div>
+                  <div class="select-option-card" data-subject="java">
+                    <span class="subject-icon"><i class="fa-brands fa-java" style="color: #007396;"></i></span>
+                    <span class="option-sublabel">Java</span>
+                  </div>
+                  <div class="select-option-card" data-subject="javascript">
+                    <span class="subject-icon"><i class="fa-brands fa-js" style="color: #F7DF1E;"></i></span>
+                    <span class="option-sublabel">JavaScript</span>
+                  </div>
+                  <div class="select-option-card" data-subject="c">
+                    <span class="subject-icon"><i class="fa-solid fa-copyright" style="color: #A8B9CC;"></i></span>
+                    <span class="option-sublabel">C</span>
+                  </div>
+                  <div class="select-option-card" data-subject="cpp">
+                    <span class="subject-icon"
+                      style="color: #00599C; font-weight: 700; font-family: 'Inter', sans-serif;">C++</span>
+                    <span class="option-sublabel">C++</span>
+                  </div>
+                  <div class="select-option-card" data-subject="cybersecurity">
+                    <span class="subject-icon"><i class="fa-solid fa-shield-halved" style="color: #EF4444;"></i></span>
+                    <span class="option-sublabel">Cybersecurity</span>
+                  </div>
+                  <div class="select-option-card" data-subject="python">
+                    <span class="subject-icon"><i class="fa-brands fa-python" style="color: #3776AB;"></i></span>
+                    <span class="option-sublabel">Python</span>
+                  </div>
+                  <div class="select-option-card" data-subject="algorithom">
+                    <span class="subject-icon"><i class="fa-solid fa-diagram-project"
+                        style="color: #F59E0B;"></i></span>
+                    <span class="option-sublabel">Algorithm</span>
+                  </div>
+                  <div class="select-option-card" data-subject="database">
+                    <span class="subject-icon"><i class="fa-solid fa-database" style="color: #EC4899;"></i></span>
+                    <span class="option-sublabel">Database</span>
+                  </div>
+                  <div class="select-option-card" data-subject="machinelearning">
+                    <span class="subject-icon"><i class="fa-solid fa-brain" style="color: #8B5CF6;"></i></span>
+                    <span class="option-sublabel">Machine Learning</span>
+                  </div>
+                </div>
+
+                <h4 class="config-group-title"><i class="fa-solid fa-list-ol"></i> Select Number of Questions</h4>
+                <div class="premium-select-grid col-3" id="config-question-count-grid">
+                  <div class="select-option-card active" data-count="25">
+                    <span class="option-value">25</span>
+                    <span class="option-sublabel">Questions (18 Mins)</span>
+                  </div>
+                  <div class="select-option-card" data-count="50">
+                    <span class="option-value">50</span>
+                    <span class="option-sublabel">Questions (35 Mins)</span>
+                  </div>
+                  <div class="select-option-card" data-count="75">
+                    <span class="option-value">75</span>
+                    <span class="option-sublabel">Questions (48 Mins)</span>
+                  </div>
+                  <div class="select-option-card" data-count="100">
+                    <span class="option-value">100</span>
+                    <span class="option-sublabel">Questions (60 Mins)</span>
+                  </div>
+                  <div class="select-option-card" data-count="150">
+                    <span class="option-value">150</span>
+                    <span class="option-sublabel">Questions (90 Mins)</span>
+                  </div>
+                  <div class="select-option-card" data-count="200">
+                    <span class="option-value">200</span>
+                    <span class="option-sublabel">Questions (120 Mins)</span>
+                  </div>
+                </div>
+
+                <div class="form-actions-center" style="margin-top: 36px;">
+                  <button type="button" id="btn-start-exam" class="btn-save-continue"
+                    style="padding: 14px 48px; font-size: 15px;">
+                    <span>Start Examination</span>
+                    <i class="fa-solid fa-play" style="margin-left: 8px;"></i>
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <section class="dashboard-card hidden" id="quiz-section" style="padding: 24px;">
+              <div class="quiz-sticky-header">
+                <div class="sticky-header-inner">
+                  <div class="sticky-badge-group">
+                    <span class="sticky-badge subject-badge"><i class="fa-solid fa-folder-open"></i> <span
+                        id="sticky-subject-display">All</span></span>
+                    <span class="sticky-badge progress-badge"><i class="fa-solid fa-check-to-slot"></i> Progress: <span
+                        id="sticky-progress-display">0/25</span></span>
+                  </div>
+
+                  <div class="timer-badge">
+                    <div class="timer-icon">
+                      <i class="fa-regular fa-clock"></i>
+                    </div>
+                    <div class="timer-texts">
+                      <span class="timer-label">Time Left</span>
+                      <span class="timer-time" id="quiz-timer-display">18:00</span>
+                    </div>
+                  </div>
+
+                  <button type="button" id="btn-submit-exam-floating" class="btn-submit-exam-sticky">
+                    <i class="fa-regular fa-paper-plane"></i>
+                    <span>Submit Exam</span>
+                  </button>
+                </div>
+                <div class="exam-progress-bar-track">
+                  <div class="exam-progress-bar-fill" id="exam-progress-fill" style="width: 0%;"></div>
+                </div>
+              </div>
+
+              <div id="questions-list-wrapper" class="questions-list-wrapper">
+              </div>
+
+              <div class="quiz-bottom-actions"
+                style="margin-top: 40px; display: flex; justify-content: center; border-top: 1px solid var(--card-border); padding-top: 30px;">
+                <button type="button" id="btn-submit-exam-bottom" class="btn-submit-exam-large">
+                  <span>Submit Examination</span>
+                  <i class="fa-regular fa-paper-plane" style="margin-left: 8px;"></i>
+                </button>
+              </div>
+            </section>
+
+          </div>
+        </div>
+
+        <div id="tab-view-profile" class="tab-view">
+          <div class="profile-grid-container">
+            <div class="dashboard-card profile-avatar-card">
+              <div class="profile-avatar-circle">
+                <img id="profile-avatar-large"
+                  src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%239CA3AF'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z'/></svg>"
+                  alt="Avatar">
+                <label for="profile-image-upload" class="avatar-upload-trigger" title="Upload profile picture">
+                  <i class="fa-solid fa-camera"></i>
+                </label>
+                <input type="file" id="profile-image-upload" accept="image/*" style="display: none;">
+              </div>
+              <h4 class="profile-user-name" id="profile-name-title">Student Name</h4>
+              <p class="profile-user-dept" id="profile-dept-subtitle">Department</p>
+            </div>
+
+            <div class="dashboard-card" style="padding: 28px;">
+              <div class="card-header"
+                style="border-bottom: 1px solid var(--card-border); padding-bottom: 16px; margin-bottom: 24px;">
+                <h3 class="section-title">Student Information</h3>
+                <p class="section-subtitle">Manage your personal details and exam credentials.</p>
+              </div>
+
+              <form id="form-edit-profile" class="profile-form-grid">
+                <div class="profile-form-group">
+                  <label for="edit-fullname">Full Name</label>
+                  <input type="text" id="edit-fullname" required>
+                </div>
+                <div class="profile-form-group">
+                  <label for="edit-email">Email Address</label>
+                  <input type="email" id="edit-email" required disabled style="opacity: 0.7; cursor: not-allowed;">
+                </div>
+                <div class="profile-form-group">
+                  <label for="edit-school">Institution Name</label>
+                  <input type="text" id="edit-school" required>
+                </div>
+                <div class="profile-form-group">
+                  <label for="edit-dept">Department</label>
+                  <input type="text" id="edit-dept" required>
+                </div>
+                <div class="profile-form-group full-width">
+                  <label for="edit-address">Home Address</label>
+                  <textarea id="edit-address" rows="3" placeholder="Enter your full home address here..."></textarea>
+                </div>
+                <div class="full-width" style="display: flex; justify-content: flex-end; margin-top: 10px;">
+                  <button type="submit" class="btn-save-continue" style="padding: 10px 24px; font-size: 14px;">
+                    <i class="fa-solid fa-floppy-disk" style="margin-right: 8px;"></i>
+                    Save Profile Changes
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div id="tab-view-results" class="tab-view">
+          <div id="results-active-content" style="display: none;">
+            <div class="dashboard-card results-card-wrapper" style="margin-bottom: 24px;">
+              <div class="results-header" style="text-align: center; margin-bottom: 30px;">
+                <h2 class="results-main-title">Exam Session Completed</h2>
+                <p class="results-main-subtitle">Your detailed performance analysis on DevQuiz System is compiled
+                  below.</p>
+              </div>
+
+              <div class="stats-grid">
+                <div class="stat-card">
+                  <div class="stat-icon-wrapper correct-glow">
+                    <i class="fa-solid fa-circle-check"></i>
+                  </div>
+                  <div class="stat-info">
+                    <span class="stat-value" id="stats-correct">0</span>
+                    <span class="stat-label">Correct Answers</span>
+                  </div>
+                </div>
+
+                <div class="stat-card">
+                  <div class="stat-icon-wrapper incorrect-glow">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                  </div>
+                  <div class="stat-info">
+                    <span class="stat-value" id="stats-incorrect">0</span>
+                    <span class="stat-label">Incorrect Answers</span>
+                  </div>
+                </div>
+
+                <div class="stat-card">
+                  <div class="stat-icon-wrapper unanswered-glow">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                  </div>
+                  <div class="stat-info">
+                    <span class="stat-value" id="stats-unanswered">0</span>
+                    <span class="stat-label">Unanswered</span>
+                  </div>
+                </div>
+
+                <div class="stat-card">
+                  <div class="stat-icon-wrapper efficiency-glow">
+                    <i class="fa-solid fa-chart-line"></i>
+                  </div>
+                  <div class="stat-info">
+                    <span class="stat-value" id="stats-efficiency">0%</span>
+                    <span class="stat-label">Score Efficiency</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="results-meta-details"
+                style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 24px 0; padding: 20px; background-color: var(--bg-primary); border-radius: 12px; border: 1px solid var(--card-border);">
+                <div class="meta-item" style="display: flex; gap: 12px; align-items: center;">
+                  <i class="fa-regular fa-clock" style="font-size: 20px; color: var(--blue-primary);"></i>
+                  <div style="display: flex; flex-direction: column;">
+                    <span
+                      style="font-size: 11px; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">Time
+                      Taken</span>
+                    <strong id="results-time-taken" style="font-size: 15px; color: var(--text-primary);">0 mins</strong>
+                  </div>
+                </div>
+                <div class="meta-item" style="display: flex; gap: 12px; align-items: center;">
+                  <i class="fa-regular fa-calendar-check" style="font-size: 20px; color: var(--blue-primary);"></i>
+                  <div style="display: flex; flex-direction: column;">
+                    <span
+                      style="font-size: 11px; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">Completion
+                      Date</span>
+                    <strong id="results-date-completed" style="font-size: 15px; color: var(--text-primary);">-</strong>
+                  </div>
+                </div>
+              </div>
+
+              <div class="results-actions" style="margin-top: 24px;">
+                <button id="btn-restart-quiz" class="btn-restart-accent">
+                  <i class="fa-solid fa-rotate-left"></i>
+                  <span>Try Another Quiz</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="dashboard-card history-section-card">
+            <div class="card-header"
+              style="border-bottom: 1px solid var(--card-border); padding-bottom: 16px; margin-bottom: 20px;">
+              <h3 class="section-title"><i class="fa-solid fa-history"
+                  style="color: var(--blue-primary); margin-right: 8px;"></i> Past Exam Records</h3>
+              <p class="section-subtitle">Your historical attempts saved locally on this browser.</p>
+            </div>
+            <div class="history-table-wrapper" id="history-records-container">
+            </div>
+          </div>
+        </div>
+
+        <div id="tab-view-instruction" class="tab-view">
+          <div class="dashboard-card">
+            <div class="card-header" style="text-align: center; margin-bottom: 24px;">
+              <h3 class="section-title"><i class="fa-solid fa-book-open"
+                  style="color: var(--blue-primary); margin-right: 8px;"></i>Exam Instructions</h3>
+              <p class="section-subtitle">Please read all instructions carefully before starting your exam.</p>
+            </div>
+            <div class="instruction-content">
+              <div class="instruction-item">
+                <div class="instruction-number">1</div>
+                <div class="instruction-text">
+                  <strong>Subject Selection</strong>
+                  <p>Choose your desired subject category from the Dashboard. You can select a specific subject or
+                    choose "All Subjects" for a mixed exam.</p>
+                </div>
+              </div>
+              <div class="instruction-item">
+                <div class="instruction-number">2</div>
+                <div class="instruction-text">
+                  <strong>Question Count</strong>
+                  <p>Select the number of questions: 25, 50, 75, 100, 150, or 200. The timer will adjust automatically
+                    based on your selection.</p>
+                </div>
+              </div>
+              <div class="instruction-item">
+                <div class="instruction-number">3</div>
+                <div class="instruction-text">
+                  <strong>Time Limit</strong>
+                  <p>25 Qs → 18 mins | 50 Qs → 35 mins | 75 Qs → 48 mins | 100 Qs → 60 mins | 150 Qs → 90 mins | 200 Qs
+                    → 120 mins. The exam will auto-submit when time expires.</p>
+                </div>
+              </div>
+              <div class="instruction-item">
+                <div class="instruction-number">4</div>
+                <div class="instruction-text">
+                  <strong>Answering Questions</strong>
+                  <p>Click on the option you believe is correct. You can change your answer anytime before submission by
+                    clicking a different option.</p>
+                </div>
+              </div>
+              <div class="instruction-item">
+                <div class="instruction-number">5</div>
+                <div class="instruction-text">
+                  <strong>Submission</strong>
+                  <p>Click the "Submit Exam" button when you are ready. You will be asked to confirm before final
+                    submission. Once submitted, answers cannot be changed.</p>
+                </div>
+              </div>
+              <div class="instruction-item">
+                <div class="instruction-number">6</div>
+                <div class="instruction-text">
+                  <strong>Results & History</strong>
+                  <p>After submission, your results will be displayed with detailed statistics. All exam records are
+                    saved and can be viewed in the Results tab.</p>
+                </div>
+              </div>
+              <div class="instruction-item">
+                <div class="instruction-number">7</div>
+                <div class="instruction-text">
+                  <strong>No Repeated Questions</strong>
+                  <p>Questions you have already attempted will not appear again in future exams, ensuring a fresh
+                    experience every time.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </main>
+
+    </div>
+  </div>
+  <footer class="site-footer dashboard-footer">
+    <p>© 2026 T. A. Nafiz | All Rights Reserved</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
